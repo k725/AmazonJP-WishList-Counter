@@ -13,6 +13,11 @@ Amazon JPのほしい物リストの総額をアレする
 
     javascript:(function(){var d=document;var s=d.createElement('script');s.src='//rawgit.com/k725/AmazonJP-WishList-Counter/master/main.js';d.body.appendChild(s)})();
 
+使う
+----
+
+サンプルをブックマークに登録後、ほしい物リストのページに行って実行。
+
 LICENSE
 -------
 
