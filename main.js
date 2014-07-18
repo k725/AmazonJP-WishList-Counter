@@ -7,13 +7,13 @@
 	var totalError = 0;
 
 	function wishGet() {
-		if (document.URL.indexOf('registry/wishlist')) {
+		if (document.URL.match(/..registry\/wishlist/)) {
 			alert('それなりの確率でコケます。\n\n'+
 			'(めっちゃ重要)転んでも泣かない人向け。\n'+
 			'(とてもとても重要)旧バージョンなデザインだと動きません。');
 
 			$.ajax({
-				url: location.href + '?page=0'
+				url: document.URL + '?page=0'
 			}).done(function(data) {
 				try {
 					$($.parseHTML(data)).find(itemPrice).each(function() {
@@ -34,12 +34,8 @@
 		}
 	}
 
-	if(typeof $ !== 'function') {
-		var s = document.createElement('script');
-		s.src = '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js';
-		s.onload = wishGet;
-		document.body.appendChild(s);
-	} else {
-		wishGet();
-	}
+	var s = document.createElement('script');
+	s.src = '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js';
+	s.onload = wishGet;
+	document.body.appendChild(s);
 })();
