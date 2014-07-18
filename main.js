@@ -7,23 +7,31 @@
 	var totalError = 0;
 
 	function wishGet() {
-		alert('それなりの確率でコケます。\n\n'+
+		if (document.URL.indexOf('registry/wishlist')) {
+			alert('それなりの確率でコケます。\n\n'+
 			'(めっちゃ重要)転んでも泣かない人向け。\n'+
 			'(とてもとても重要)旧バージョンなデザインだと動きません。');
-		$.ajax({
-			url: '//www.amazon.co.jp/registry/wishlist/' + wishId
-		}).done(function(data) {
-			
-			$($.parseHTML(data)).find(itemPrice).each(function() {
-				totalCount += Number(new String($(this).text()).replace(/,/g, '').replace(/[^0-9]/g, ''));
-			});
 
-			$($.parseHTML(data)).find(itemNoFound).each(function() {
-				totalError++;
-			});
+			$.ajax({
+				url: location.href + '?page=0'
+			}).done(function(data) {
+				try {
+					$($.parseHTML(data)).find(itemPrice).each(function() {
+						totalCount += Number(new String($(this).text()).replace(/,/g, '').replace(/[^0-9]/g, ''));
+					});
 
-			alert('ほしい物リストの総額は...\n\n合計で' + totalCount + '円でした!!(在庫なし: ' + totalError + ')');
-		});
+					$($.parseHTML(data)).find(itemNoFound).each(function() {
+						totalError++;
+					});
+
+					alert('ほしい物リストの総額は...\n\n合計で' + totalCount + '円でした!!(在庫なし: ' + totalError + ')');
+				} catch(e) {
+					alert('エラーが発生しました。リロードし、再度お試しください。');
+				}
+			});
+		} else {
+			alert('Amazonのほしい物リストからお試しください');
+		}
 	}
 
 	if(typeof $ !== 'function') {
