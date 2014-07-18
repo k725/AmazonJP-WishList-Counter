@@ -10,9 +10,8 @@
 		alert('それなりの確率でコケます。\n\n'+
 			'(めっちゃ重要)転んでも泣かない人向け。\n'+
 			'(とてもとても重要)旧バージョンなデザインだと動きません。');
-		var i = 0;
 		$.ajax({
-			url: '//www.amazon.co.jp/registry/wishlist/' + wishId + '?page=' + i
+			url: '//www.amazon.co.jp/registry/wishlist/' + wishId
 		}).done(function(data) {
 			
 			$($.parseHTML(data)).find(itemPrice).each(function() {
