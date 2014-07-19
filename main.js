@@ -1,10 +1,9 @@
 (function(){
-	var itemPrice = '[id^=itemPrice_]';
-	var itemNoFound = '.itemAvailDetails';
-	var itemPages = '.num-pages';
-	var wishId = '';
-	var totalCount = 0;
-	var totalError = 0;
+	var itemPrice   = '[id^=itemPrice_]',
+		itemNoFound = '.itemAvailDetails',
+		itemPages   = '.num-pages',
+		totalCount  = 0,
+		totalError  = 0;
 
 	function wishGet() {
 		if (document.URL.match(/..registry\/wishlist/)) {
