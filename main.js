@@ -3,11 +3,12 @@
 		itemNoFound = '.itemAvailDetails',
 		itemPages   = '.num-pages',
 		totalCount  = 0,
-		totalError  = 0;
+		totalError  = 0,
+		totalItem   = 0;
 
 	function wishGet() {
 		if (document.URL.match(/..registry\/wishlist/)) {
-			alert('それなりの確率でコケます。\n\n'+
+			alert('それなりの確率でコケます。1ページ目で実行してください。結果がおかしくなります。\n\n'+
 			'(めっちゃ重要)転んでも泣かない人向け。\n'+
 			'(とてもとても重要)旧バージョンなデザインだと動きません。');
 
@@ -17,13 +18,14 @@
 				try {
 					$($.parseHTML(data)).find(itemPrice).each(function() {
 						totalCount += Number(new String($(this).text()).replace(/,/g, '').replace(/[^0-9]/g, ''));
+						totalItem++;
 					});
 
 					$($.parseHTML(data)).find(itemNoFound).each(function() {
 						totalError++;
 					});
 
-					alert('ほしい物リストの総額は...\n\n合計で' + totalCount + '円でした!!(在庫なし: ' + totalError + ')');
+					alert('ほしい物リストの総額は...\n\n合計で' + totalCount + '円でした!! (在庫なし: ' + totalError + ' / 商品数: ' + totalItem + ')');
 				} catch(e) {
 					alert('エラーが発生しました。リロードし、再度お試しください。');
 				}
