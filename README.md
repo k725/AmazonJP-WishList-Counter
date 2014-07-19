@@ -11,7 +11,7 @@ Amazon JPのほしい物リストの総額をアレする
 
 こんなかんじでブックマークに登録してアレする
 
-    javascript:(function(){var d=document;var s=d.createElement('script');s.src='//cdn.rawgit.com/k725/AmazonJP-WishList-Counter/master/main.js';d.body.appendChild(s)})();
+    javascript:(function(){var d=document;var s=d.createElement('script');s.src='//rawgit.com/k725/AmazonJP-WishList-Counter/master/main.js';d.body.appendChild(s)})();
 
 使う
 ----
